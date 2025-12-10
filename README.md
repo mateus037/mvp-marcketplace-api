@@ -14,11 +14,10 @@ Core business logic service with persistence.
 - `SECONDARY_API_URL`: URL of the MVP Marketplace Services
 
 ### Setup
-1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
-2. Update values as needed.
+1. Configure the variables:
+   - `DATABASE_URL`: PostgreSQL connection string
+   - `PORT`: Port to run the server on (default: `3001`)
+   - `SECONDARY_API_URL`: URL of the MVP Marketplace Services
 
 ## Running
 ```bash
