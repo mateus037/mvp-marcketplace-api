@@ -30,6 +30,6 @@ npm run dev
 
 ## Docker
 ```bash
-docker build -t mvp-marcketplace-api .
-docker run -p 3001:3001 --env-file .env mvp-marcketplace-api
+docker build -t mvp-marketplace-api .
+docker run -p 3001:3001 --env-file .env mvp-marketplace-api
 ```
