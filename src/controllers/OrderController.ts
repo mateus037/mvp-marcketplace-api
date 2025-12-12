@@ -42,3 +42,27 @@ export const listUserOrders = async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Failed to fetch orders' });
     }
 };
+
+export const deleteOrderItem = async (req: Request, res: Response) => {
+    try {
+        const { orderId, itemId } = req.params;
+
+        // Optional: Check if the item belongs to the order
+        const item = await prisma.orderItem.findUnique({
+            where: { id: itemId }
+        });
+
+        if (!item || item.orderId !== orderId) {
+            return res.status(404).json({ error: 'Order item not found' });
+        }
+
+        await prisma.orderItem.delete({
+            where: { id: itemId }
+        });
+
+        res.status(204).send();
+    } catch (error) {
+        console.error('Error deleting order item:', error);
+        res.status(500).json({ error: 'Failed to delete order item' });
+    }
+};
